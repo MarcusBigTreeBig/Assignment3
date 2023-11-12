@@ -5,6 +5,11 @@ public class DoublyLinkedList implements LinkedList {
     private Node head;
     private Node reading;
 
+    /**
+     * creates DoublyLinkedList with a head node
+     *
+     * @param head
+     */
     public DoublyLinkedList (Node head) {
         this.head = head;
         reading = head;

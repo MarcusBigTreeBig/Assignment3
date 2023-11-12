@@ -5,6 +5,11 @@ public class SinglyLinkedList implements LinkedList{
     private Node head;
     private Node reading;
 
+    /**
+     * constructs a SinglyLinkedList with a head node
+     *
+     * @param head
+     */
     public SinglyLinkedList (Node head) {
         this.head = head;
         reading = head;

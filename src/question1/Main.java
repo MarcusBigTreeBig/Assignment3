@@ -1,6 +1,12 @@
 package question1;
 
 public class Main {
+
+    /**
+     * defines 2 sorted SinglyLinkedList's of integers, merges them into a sorted DoublyLinkedList, and prints the output
+     *
+     * @param args
+     */
     public static void main (String[] args) {
 
         int[] numbers1 = {1, 1, 1, 2, 2, 3, 4, 4, 5, 9};
@@ -23,9 +29,10 @@ public class Main {
         DoublyLinkedList mergedList;
         mergedList = new DoublyLinkedList(determineNode(list1, list2));
         Node node;
-        while (list1.read().getNext() != null || list2.read().getNext() != null) {
+        //looking at next node instead of current one being read as to be able to remove the node being observed
+        while (list1.read().getNext() != null || list2.read().getNext() != null) {//once both are null, have gone through entirety of both lists
             node = determineNode(list1, list2);
-            if (node.getKey() != mergedList.read().getKey()) {
+            if (node.getKey() != mergedList.read().getKey()) {//to avoid duplicates
                 mergedList.addNode(node);
                 mergedList.forward();
             }
@@ -61,17 +68,26 @@ public class Main {
         }
         System.out.println();
     }
+
+    /**
+     * determines the node that should be added to the DoublyLinkedList
+     * the node will be removed from the input list it belongs to, and will have it's forward pointer removed
+     *
+     * @param list1
+     * @param list2
+     * @return the node of smaller key, or the one that's not null between the 2 lists
+     */
     private static Node determineNode (SinglyLinkedList list1, SinglyLinkedList list2) {
         Node node;
         Node next1 = list1.read().getNext();
         Node next2 = list2.read().getNext();
-        if (next2 != null && (next1 == null || next1.getKey() > next2.getKey())) {
+        if (next2 != null && (next1 == null || next1.getKey() > next2.getKey())) {//list 1 empty or key is larger than list 2
             node = list2.read().getNext();
             list2.removeNext();
-        }else if (next1 != null && (next2 == null || next2.getKey() > next1.getKey())) {
+        }else if (next1 != null && (next2 == null || next2.getKey() > next1.getKey())) { //list 2 empty or key is larger than list 1
             node = list1.read().getNext();
             list1.removeNext();
-        }else {
+        }else { // keys are equal (to get to this point, nether list can read a null)
             node = list1.read().getNext();
             list1.removeNext();
             list2.removeNext();
