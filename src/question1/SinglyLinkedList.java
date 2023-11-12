@@ -26,5 +26,10 @@ public class SinglyLinkedList implements LinkedList{
         node.setNext(reading.getNext());
         reading.setNext(node);
     }
+    public void removeNext () {
+        if (reading.getNext() != null) {
+            reading.setNext(reading.getNext().getNext());
+        }
+    }
 
 }

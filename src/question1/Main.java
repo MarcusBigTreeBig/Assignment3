@@ -3,9 +3,9 @@ package question1;
 public class Main {
     public static void main (String[] args) {
 
-        int[] numbers1 = {1, 1, 1, 2, 2, 3, 4, 4, 5};
-        int[] numbers2 = {1, 1, 2, 4, 5, 6, 7};
-        //printIntegerLinkedList(mergeLinkedLists(initializeIntegerLinkedList(numbers1), initializeIntegerLinkedList(numbers2)));
+        int[] numbers1 = {1, 1, 1, 2, 2, 3, 4, 4, 5, 9};
+        int[] numbers2 = {1, 1, 2, 4, 5, 6, 7, 13};
+        printIntegerLinkedList(mergeLinkedLists(initializeIntegerLinkedList(numbers1), initializeIntegerLinkedList(numbers2)));
 
     }
 
@@ -20,7 +20,16 @@ public class Main {
     public static DoublyLinkedList mergeLinkedLists (SinglyLinkedList list1, SinglyLinkedList list2) {
         list1.goToHead();
         list2.goToHead();
-        DoublyLinkedList mergedList = null;
+        DoublyLinkedList mergedList;
+        mergedList = new DoublyLinkedList(determineNode(list1, list2));
+        Node node;
+        while (list1.read().getNext() != null || list2.read().getNext() != null) {
+            node = determineNode(list1, list2);
+            if (node.getKey() != mergedList.read().getKey()) {
+                mergedList.addNode(node);
+                mergedList.forward();
+            }
+        }
         return mergedList;
     }
 
@@ -51,6 +60,24 @@ public class Main {
             list.forward();
         }
         System.out.println();
+    }
+    private static Node determineNode (SinglyLinkedList list1, SinglyLinkedList list2) {
+        Node node;
+        Node next1 = list1.read().getNext();
+        Node next2 = list2.read().getNext();
+        if (next2 != null && (next1 == null || next1.getKey() > next2.getKey())) {
+            node = list2.read().getNext();
+            list2.removeNext();
+        }else if (next1 != null && (next2 == null || next2.getKey() > next1.getKey())) {
+            node = list1.read().getNext();
+            list1.removeNext();
+        }else {
+            node = list1.read().getNext();
+            list1.removeNext();
+            list2.removeNext();
+        }
+        node.setNext(null);
+        return node;
     }
 
 }
