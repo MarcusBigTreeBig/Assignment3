@@ -39,7 +39,7 @@ public class LinkedListDeque <T> implements Deque <T>{
         }else{
             Node add = new Node<>(input);
             add.forward = rear;
-            front.backward = add;
+            rear.backward = add;
             rear = add;
         }
         size++;
@@ -76,7 +76,7 @@ public class LinkedListDeque <T> implements Deque <T>{
 
     @Override
     public void rearDequeue() {
-        if (size > 0 && rear != null) {
+        if (size > 0) {
             rear = rear.forward;
             if (rear != null) {
                 rear.backward = null;
