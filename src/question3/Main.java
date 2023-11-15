@@ -42,3 +42,29 @@ public class Main {
     }
 
 }
+
+/*
+Output:
+
+Array:
+null null
+This This
+is This
+is a
+This a
+This This
+null null
+null null
+Test Test
+
+Linked List:
+null null
+This This
+is This
+is a
+This a
+This This
+null null
+null null
+Test Test
+ */

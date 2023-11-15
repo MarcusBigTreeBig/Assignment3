@@ -70,6 +70,9 @@ public class LinkedListDeque <T> implements Deque <T>{
             if (front != null) {
                 front.forward = null;
             }
+            if (size == 1) {
+                rear = front;
+            }
             size--;
         }
     }
@@ -80,6 +83,9 @@ public class LinkedListDeque <T> implements Deque <T>{
             rear = rear.forward;
             if (rear != null) {
                 rear.backward = null;
+            }
+            if (size == 1) {
+                front = rear;
             }
             size--;
         }
