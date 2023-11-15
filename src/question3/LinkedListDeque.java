@@ -42,28 +42,40 @@ public class LinkedListDeque <T> implements Deque <T>{
 
     @Override
     public T frontRead() {
-        return front.getValue();
+        if (front != null) {
+            return front.getValue();
+        }else{
+            return null;
+        }
     }
 
     @Override
     public T rearRead() {
-        return rear.getValue();
+        if (rear != null) {
+            return rear.getValue();
+        }else{
+            return null;
+        }
     }
 
     @Override
     public void frontDequeue() {
         if (size > 0) {
             front = front.backward;
-            front.forward = null;
+            if (front != null) {
+                front.forward = null;
+            }
             size--;
         }
     }
 
     @Override
     public void rearDequeue() {
-        if (size > 0) {
+        if (size > 0 && rear != null) {
             rear = rear.forward;
-            rear.backward = null;
+            if (rear != null) {
+                rear.backward = null;
+            }
             size--;
         }
     }

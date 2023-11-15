@@ -1,14 +1,19 @@
 package question2;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
-    //The symbols that will be treated as operations
-    public static char[] validOperations = {'+', '-', '*', '/'};
+    public static char[] validOperations = {'+', '-', '*', '/'}; //The symbols that will be treated as operations
 
     public static void main (String[] args) {
-        String expression = "3 6 + 2 4 - * 7 +";
-        int expectedValue = -11;
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input postfix expression, each operation and operand should be separated by a space, valid operations are: ");
+        for (char c: validOperations) {
+            System.out.print(c + " ");
+        }
+        System.out.println();
+        String expression = input.nextLine();
         System.out.println(valueOfPostfixExpression(expression));
     }
 
@@ -85,14 +90,20 @@ public class Main {
      * @return true if s can be converted to a double
      */
     public static boolean isNumeric(String s) {
-        if (s == null) {
-            return false;
-        }
         try {
             Double.parseDouble(s);
             return true;
-        } catch (NumberFormatException exception) {
+        } catch (Exception exception) {
             return false;
         }
     }
 }
+
+/*
+Input/Output:
+
+Input postfix expression, each operation and operand should be separated by a space, valid operations are: + - * /
+3 6 + 2 4 - * 7 +
+-11.0
+
+ */

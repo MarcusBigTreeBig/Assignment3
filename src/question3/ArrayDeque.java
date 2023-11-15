@@ -47,7 +47,7 @@ public class ArrayDeque<T> implements Deque<T>{
                 front = memory.length/2;
                 rear = front;
             }
-            memory[front] = input;
+            memory[rear] = input;
             size++;
         }
     }
@@ -82,7 +82,7 @@ public class ArrayDeque<T> implements Deque<T>{
             if (rear == memory.length-1) {
                 rear = 0;
             }else{
-                rear = rear - 1;
+                rear = rear + 1;
             }
             size--;
         }
