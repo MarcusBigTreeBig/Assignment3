@@ -1,5 +1,10 @@
 package question3;
 
+/**
+ * Implements a Deque using a LinkedList
+ * @param <T>
+ */
+
 public class LinkedListDeque <T> implements Deque <T>{
 
     private Node<T> front;
@@ -80,6 +85,10 @@ public class LinkedListDeque <T> implements Deque <T>{
         }
     }
 
+    /**
+     * nodes used to construct the LinkedList for the Deque
+     * @param <T>
+     */
     private class Node <T> {
         Node forward;
         Node backward;

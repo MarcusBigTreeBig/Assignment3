@@ -1,9 +1,12 @@
 package question3;
 
-import question1.LinkedList;
-
 public class Main {
 
+    /**
+     * runs a test for both implementations of deque, to make sure each works
+     *
+     * @param args
+     */
     public static void main (String[] args) {
         Deque<String> arrQ = new ArrayDeque<String>(20);
         Deque<String> listQ = new LinkedListDeque<String>();
@@ -13,6 +16,11 @@ public class Main {
         testDeque(listQ);
     }
 
+    /**
+     * runs a test for a deque to make sure it works
+     *
+     * @param q the deque being tested
+     */
     public static void testDeque (Deque<String> q) {
         System.out.println(q.frontRead() + " " + q.rearRead());
         q.frontEnqueue("This");

@@ -6,6 +6,12 @@ import java.util.Scanner;
 public class Main {
     public static char[] validOperations = {'+', '-', '*', '/'}; //The symbols that will be treated as operations
 
+    /**
+     * takes an input from the user as a postfix expression, and evaluates it
+     * Assumes the input is a valid expression
+     *
+     * @param args
+     */
     public static void main (String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Input postfix expression, each operation and operand should be separated by a space, valid operations are: ");

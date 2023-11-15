@@ -1,5 +1,12 @@
 package question3;
 
+/**
+ * implements a deque using an array
+ * requires a fixed maximum size when creating
+ *
+ * @param <T>
+ */
+
 public class ArrayDeque<T> implements Deque<T>{
 
     private T[] memory;
@@ -16,6 +23,11 @@ public class ArrayDeque<T> implements Deque<T>{
         memory = (T[]) new Object[max];
     }
 
+    /**
+     * if the maximum size is reached, input will not be added
+     *
+     * @param input
+     */
     @Override
     public void frontEnqueue(T input) {
         if (size < memory.length) {
@@ -34,6 +46,11 @@ public class ArrayDeque<T> implements Deque<T>{
         }
     }
 
+    /**
+     * if maximum size is reached, input will not be added
+     *
+     * @param input
+     */
     @Override
     public void rearEnqueue(T input) {
         if (size < memory.length) {
