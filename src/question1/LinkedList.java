@@ -1,5 +1,9 @@
 package question1;
 
+/**
+ * Defines a LinkedList
+ */
+
 public interface LinkedList {
 
     public Node getHead ();

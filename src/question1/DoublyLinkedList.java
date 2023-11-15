@@ -1,5 +1,9 @@
 package question1;
 
+/**
+ * LinkedList with a forward and backward pointer for each Node
+ */
+
 public class DoublyLinkedList implements LinkedList {
 
     private Node head;

@@ -1,5 +1,9 @@
 package question1;
 
+/**
+ * Defines a node for a LinkedList
+ */
+
 public interface Node{
 
     public int getKey();

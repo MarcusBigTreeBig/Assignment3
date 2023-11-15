@@ -1,5 +1,9 @@
 package question1;
 
+/**
+ * LinkedList with pointers to other Nodes in only one direction
+ */
+
 public class SinglyLinkedList implements LinkedList{
 
     private Node head;

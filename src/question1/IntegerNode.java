@@ -1,11 +1,20 @@
 package question1;
 
+/**
+ * A LinkedList Node that works on the int primitive data type
+ * The key is the value
+ */
+
 public class IntegerNode implements Node{
 
     private int value;
     private Node next;
     private Node previous;
 
+    /**
+     *
+     * @param value the value and key of this node
+     */
     public IntegerNode (int value) {
         this.value = value;
         next = null;
