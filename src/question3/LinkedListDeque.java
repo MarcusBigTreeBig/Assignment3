@@ -52,16 +52,20 @@ public class LinkedListDeque <T> implements Deque <T>{
 
     @Override
     public void frontDequeue() {
-        front = front.backward;
-        front.forward = null;
-        size--;
+        if (size > 0) {
+            front = front.backward;
+            front.forward = null;
+            size--;
+        }
     }
 
     @Override
     public void rearDequeue() {
-        rear = rear.forward;
-        rear.backward = null;
-        size--;
+        if (size > 0) {
+            rear = rear.forward;
+            rear.backward = null;
+            size--;
+        }
     }
 
     private class Node <T> {
