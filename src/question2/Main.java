@@ -3,6 +3,7 @@ package question2;
 import java.util.ArrayList;
 
 public class Main {
+    //The symbols that will be treated as operations
     public static char[] validOperations = {'+', '-', '*', '/'};
 
     public static void main (String[] args) {
@@ -11,6 +12,13 @@ public class Main {
         System.out.println(valueOfPostfixExpression(expression));
     }
 
+    /**
+     * Assumes each input is seperated by a space
+     * If each input is not in the form of a numeric or one of the valid operations, it will be ignored
+     *
+     * @param expression
+     * @return the value of the expression
+     */
     public static double valueOfPostfixExpression (String expression) {
         double operand1;
         double operand2;
@@ -18,6 +26,7 @@ public class Main {
         int start = 0;
         Stack<Double> stack = new Stack<Double>();
         ArrayList<String> substrings = new ArrayList<String>();
+        //seperate into substrings from where the spaces are located
         for (int i = 0; i < expression.length(); i++) {
             if (expression.charAt(i) == ' ') {
                 if (i != start) {
@@ -26,11 +35,12 @@ public class Main {
                 start = i+1;
             }
         }
-        substrings.add(expression.substring(start));
+        substrings.add(expression.substring(start));//add the last substring
         for (String s: substrings) {
             if (isNumeric(s)) {
                 stack.push(Double.parseDouble(s));
             }else if (s.length() == 1 && isValidOperation(s.charAt(0))) {
+                //evaluate with the top 2 operands on the stack
                 operand2 = stack.top();
                 stack.pop();
                 operand1 = stack.top();
@@ -52,9 +62,14 @@ public class Main {
                 stack.push(Double.valueOf(result));
             }
         }
-        return stack.top();
+        return stack.top();//if the input is a valid postfix expression, only the result should be left on the stack
     }
 
+    /**
+     *
+     * @param c the character checked
+     * @return true if the character is found in the valid operations array
+     */
     public static boolean isValidOperation (char c) {
         for (int i = 0; i < validOperations.length; i++) {
             if (c == validOperations[i]) {
@@ -64,6 +79,11 @@ public class Main {
         return false;
     }
 
+    /**
+     *
+     * @param s
+     * @return true if s can be converted to a double
+     */
     public static boolean isNumeric(String s) {
         if (s == null) {
             return false;

@@ -1,25 +1,38 @@
 package question2;
 
-import question3.LinkedListDeque;
-
 public class Stack <T> {
 
     Node head;
 
+    /**
+     * adds the input to the stack
+     * @param input
+     */
     public void push (T input) {
         Node add = new Node<T>(input);
         add.next = head;
         head = add;
     }
 
+    /**
+     *
+     * @return the visible input in the stack
+     */
     public T top () {
         return (T) head.getValue();
     }
 
+    /**
+     * removes the top of the stack
+     */
     public void pop () {
         head = head.next;
     }
 
+    /**
+     * Linked list node
+     * @param <T>
+     */
     private class Node <T> {
         Node next;
         T value;
